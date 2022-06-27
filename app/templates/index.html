@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+
+Title
+
+{% endblock %}
+
+
+{% block left-coloumn %}
+
+<button type="button" class="btn btn-success btn-lg mx-4 my-5">GET</button>
+
+<ul id='seconds'></ul>
+
+    {% endblock %}
+
+
+{% block right-coloumn %}
+{% csrf_token %}
+
+<ul id='right'></ul>
+
+    {% endblock %}    
