@@ -1,0 +1,60 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block style %}
+
+.mt-1 {
+    margin-top: -1.75rem!important;
+}
+{% endblock %} 
+{% block content %}
+
+
+<div class="col-lg-8 p-4 m-4 mx-auto border border-success">
+    
+    <nav class="mt-1">
+        <div class="nav nav-tabs dark bg-dark p-1 m-4 mx-auto" id="nav-tab" role="tablist">
+          <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Add Book</button>
+          <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" onclick="showAllBooks();">Show Books</button>   
+          
+          <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Delete Book</button>
+        </div>
+    </nav>
+
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active  m-1 p-2" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+            
+            {% comment %} add book form {% endcomment %}
+            <form class="col-lg-6 mx-auto border border-info rounder p-2 m-2">
+            <p class="alert alert-info">Add Book Form</p>
+
+                <div class="form-group mt-4 mb-4">
+                  <lable>Book Name</lable>
+                  <input type="text" class="form-control" name="name" id="name">
+                </div>
+                <div class="form-group mt-4 mb-4">
+                    <lable>Book Price</lable>
+                    <input type="number" class="form-control" name="prize" id="prize">
+                </div>
+                <div class="form-group mt-4 mb-1">
+                  <lable>Number of Pages</lable>
+                  <input type="number" class="form-control" name="pages" id="pages">
+                </div>
+
+                <div>
+                    <button type="submit" class="btn form-control btn-success mt-4" id="book">Save Book</button>
+                </div>
+              </form>
+        </div>
+        <div class="tab-pane fade m-1 p-2" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+           {% comment %} show books {% endcomment %}
+
+        </div>
+        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">Delete Book</div>
+    
+      </div>
+</div>  
+
+
+</script>
+{% endblock %}
+

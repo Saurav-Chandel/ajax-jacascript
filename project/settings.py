@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app'
+    'app',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -74,10 +75,17 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+import pymysql
+pymysql.install_as_MySQLdb()
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE'  : 'django.db.backends.mysql', # <-- UPDATED line 
+        'NAME'    : 'xml_ajax',                 # <-- UPDATED line 
+        'USER'    : 'root',                     # <-- UPDATED line
+        'PASSWORD': 'root',              # <-- UPDATED line
+        'HOST'    : 'localhost',                # <-- UPDATED line
+        'PORT'    : '3306',
     }
 }
 

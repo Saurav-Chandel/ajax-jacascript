@@ -1,8 +1,12 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 # from django.views.generics import View
 from django.views import View
 from time import time
 from django.http import JsonResponse
+from .models import *
+from .serializer import *
+
 # Create your views here.
 
 
@@ -22,3 +26,40 @@ class AjaxHandlerView(View):
         print(card_text)
         result=f"I have got {card_text}"  
         return JsonResponse({'data':result},status=200)  
+
+
+def index(request):
+    return render(request,'data.html')  
+
+
+def AddBook(request):
+    name=request.GET['name']
+    prize=request.GET['prize']
+    pages=request.GET['pages']
+
+    b=book(name=name,prize=prize,pages=pages)
+    try:
+        b.save();
+        return HttpResponse('true')
+    except:
+        return HttpResponse('false')
+
+def GetAllBooks(request):
+    print('get all books')
+    l=[]
+    b=book.objects.all()
+    for bk in b:
+        ser=BookSerializer(bk)
+        l.append(ser.data);
+        # print(ser.data)
+    # print(l)    
+    import json
+    return HttpResponse(json.dumps(l))
+    # return render(request,'data.html',{'book':b})
+
+
+
+
+
+   
+    
