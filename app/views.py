@@ -33,16 +33,26 @@ def index(request):
 
 
 def AddBook(request):
-    name=request.GET['name']
-    prize=request.GET['prize']
-    pages=request.GET['pages']
+    if request.method=="GET":
+        print(")))))))))))))))))0")
+        return render(request,'data.html')
+    if request.method=="POST":
+        print('______________--')
+        name=request.POST['name']
+        print(name)
+        prize=request.POST['prize']
+        pages=request.POST['pages']
 
-    b=book(name=name,prize=prize,pages=pages)
-    try:
-        b.save();
-        return HttpResponse('true')
-    except:
-        return HttpResponse('false')
+    
+        b=book(name=name,prize=prize,pages=pages)
+        b.save()
+        return HttpResponse("jhfbewhyjfbwybfyebyuy")
+        
+        # try:
+        #     b.save();
+        #     return HttpResponse('true')
+        # except:
+        #     return HttpResponse('false')
 
 def GetAllBooks(request):
     print('get all books')
